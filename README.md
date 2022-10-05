@@ -62,12 +62,24 @@ developing your own process.
 
 - Add a new toy when the toy form is submitted
 
+  - The form is not submitting the data to the backend
+
   - How I debugged:
+    - NameError (uninitialized constant ToysController::Toys):
+    - Remove the extra 's' in Toys ..ToysController
 
 - Update the number of likes for a toy
 
   - How I debugged:
+    -- Unpermitted parameter: :id in rb:16
+    -- Add increment_likes in the toys_controller.rb
+    --failed had to use byebug to see the error
+    -- fixed by adding status in render json
 
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+   --Error 404 not found in the browser
+   -- rails serer error: ActionController::RoutingError (No route matches [DELETE] "/toys/1"):
+   --Goes to fix routes.rb
+   -- Added destroy method routes.rb resources :toys, only: [:index, :create, :destroy]
